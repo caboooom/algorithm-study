@@ -7,11 +7,11 @@ public class Main {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
 
             // 연산 결과 미리 저장
-            int[] table = new int[12];
+            int[] table = new int[11];
             table[1] = 1;
             table[2] = 2;
             table[3] = 4;
-            for(int i = 4; i < 12; i++) {
+            for(int i = 4; i < 11; i++) {
                 table[i] = table[i-1] + table[i-2] + table[i-3];
             }
 
