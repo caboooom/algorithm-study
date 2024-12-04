@@ -4,7 +4,7 @@
 
 | 플랫폼 | 문제 번호 (레벨) | 문제 이름                                   |
 | --- |--|-----------------------------------------|
-| BOJ | 11054 | [팔](https://www.acmicpc.net/problem/11054) |
+| BOJ | 11054 | [가장 긴 바이토닉 부분 수열](https://www.acmicpc.net/problem/11054) |
 | BOJ | 1912 | [연속합](https://www.acmicpc.net/problem/1912) |
 | BOJ | 2579 | [계단 오르기](https://www.acmicpc.net/problem/2579) |
 
