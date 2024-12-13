@@ -1,40 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
-    static Integer[] dp;
-	static int[] arr;
-    
-	public static void main(String[] args) {
-    
-		Scanner in = new Scanner(System.in);
-		
-		int N = in.nextInt();
-		
-		dp = new Integer[N + 1];
-		arr = new int[N + 1];
-		
-		for(int i = 1; i < N + 1; i++) {
-			arr[i] = in.nextInt();
+	static int[] w;
+	static Integer[] dp;
+
+	public static void main(String[] args) throws IOException {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			int N = Integer.parseInt(br.readLine());
+			w = new int[N + 1];
+			dp = new Integer[N + 1];
+
+			for (int i = 1; i <= N; i++) {
+				w[i] = Integer.parseInt(br.readLine());
+			}
+
+			dp[0] = 0;
+			dp[1] = w[1];
+			if (N > 1) {
+				dp[2] = dp[1] + w[2];
+			}
+
+			System.out.println(recur(N));
 		}
- 
-		dp[0] = 0;
-		dp[1] = arr[1];
-		
-		/*
-		 *  (N이 1로 주어질 수 있으므로 이럴 때를 위해 조건식을 달아둔다.
-		 *  또한 dp[2]는 어떤 경우에도 첫 번째와 두 번째를 합한 것이 최댓값이다. 
-		 */
-		if(N > 1) {
-			dp[2] = arr[1] + arr[2];
-		}
-		
-		System.out.println(recur(N));
 	}
-	
-	static int recur(int N) {
-		
-		if(dp[N] == null) {
-			dp[N] = Math.max(Math.max(recur(N - 2), recur(N - 3) + arr[N - 1]) + arr[N], recur(N - 1));
+
+	private static int recur(int n) {
+		if (dp[n] == null) {
+			dp[n] = Math.max(Math.max(recur(n - 1), w[n] + recur(n - 2)), recur(n - 3) + w[n - 1] + w[n]);
 		}
-		
-		return dp[N];
+
+		return dp[n];
 	}
+
 }
