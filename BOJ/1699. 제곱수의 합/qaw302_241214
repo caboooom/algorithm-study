@@ -1,0 +1,59 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+/**
+ * 소요시간 : 1시간
+ */
+public class Main {
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        int[] dp = new int[n+1];
+        
+        for (int i=1; i<=n; i++) {
+            int num = (int) Math.sqrt(i);
+            if (i == num*num) {
+                dp[i]=1;
+            } else {
+                int min = dp[1] + dp[i-1];
+                for (int j=2; j<=i/2; j++) {
+                    min = Math.min(min, dp[j] + dp[i-j]);    // 1~i-1값에서 더했을때 i가 되는 조합끼리의 값을 더함 (ex. i=5 -> 1+4, 2+3 ..)
+                }
+                dp[i] = min;
+            }
+        }
+          
+        System.out.println(dp[n]);
+        br.close();
+    }
+}
+
+
+/**
+ * 원래 코드가 시간이 오래걸려서 풀이를 찾아보고 다시 풀어 봄
+ */
+
+ import java.io.BufferedReader;
+ import java.io.InputStreamReader;
+ import java.io.IOException;
+ 
+ public class Main {
+     public static void main(String args[]) throws IOException {
+         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+         int n = Integer.parseInt(br.readLine());
+ 
+         int[] dp = new int[n+1];
+         
+         for (int i=1; i<=n; i++) {
+             dp[i] = i;
+             for (int j=1; j*j<=i; j++) {
+                 dp[i] = Math.min(dp[i], dp[i-j*j] + 1);          // i 보다 작은 제곱수 중에 횟수가 가장 적게 드는 제곱수를 찾아야 함
+             }
+         }
+           
+         System.out.println(dp[n]);
+         br.close();
+     }
+ }
