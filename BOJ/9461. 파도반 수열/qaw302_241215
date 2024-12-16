@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+/**
+ * 소요시간 : 9분
+ */
+public class Main
+{
+    public static void main(String args[]) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        int t = Integer.parseInt(br.readLine());
+        for (int i=0; i<t; i++) {
+            int n = Integer.parseInt(br.readLine());
+
+            // 큰 수에서 값이 int를 넘어가므로 long으로 선언
+            long[] dp = new long[n+2];  // 초기값 설정을 위한 추가 공간 2개
+            dp[0] = 0;
+            dp[1] = 1;
+            dp[2] = 1;
+
+            for (int j=3; j<=n; j++) {
+                dp[j] = dp[j-2] + dp[j-3];
+            }
+            
+            sb.append(dp[n]);
+            sb.append(System.lineSeparator());
+        }
+
+        System.out.println(sb.toString());
+        br.close();
+    }
+}
