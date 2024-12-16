@@ -1,20 +1,25 @@
+import java.io.*;
+
 public class Main {
-    public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static Long[] arr;
 
-        int N = Integer.parseInt(br.readLine());
-
-        long [] answer = new long[N+1]; // 정수형 범위를 초과하는 것에 주의한다.
-
-        answer[0] = 0;
-        answer[1] = 1;
-
-
-
-        for( int i =2; i<=N; i++){
-            answer[i] = answer[i-1]+answer[i-2];
+    public static void main(String[] args) throws IOException {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            int N = Integer.parseInt(br.readLine());
+            arr = new Long[N + 1];
+            arr[0] = 0L;
+            arr[1] = 1L;
+            System.out.println(recur(N));
         }
+    }
 
-        System.out.println(answer[N]);
+    public static long recur(int n) {
+        if (n <= 1) {
+            return arr[n];
+        }
+        if (arr[n] == null) {
+            arr[n] = recur(n - 1) + recur(n - 2);
+        }
+        return arr[n];
     }
 }
