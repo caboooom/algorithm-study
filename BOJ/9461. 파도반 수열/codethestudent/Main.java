@@ -1,34 +1,40 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
- 
+
 public class Main {
-	
-	public static Long[] seq = new Long[101];
- 
+	static Long[] dp;
+	static List<Long> answerList = new ArrayList<>();
+
 	public static void main(String[] args) throws IOException {
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		
-		seq[0] = 0L;
-		seq[1] = 1L;
-		seq[2] = 1L;
-		seq[3] = 1L;
-		
-		int T = Integer.parseInt(br.readLine());
-		
-		while(T-->0) {
-			sb.append(padovan(Integer.parseInt(br.readLine()))).append('\n');
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			int total = Integer.parseInt(br.readLine());
+			dp = new Long[101];
+			dp[0] = 0l;
+			dp[1] = 1l;
+			dp[2] = 1l;
+
+			for (int i = 0; i < total; i++) {
+				int N = Integer.parseInt(br.readLine());
+
+				if (N < 3) {
+					answerList.add(1l);
+				} else {
+					answerList.add(recur(N));
+				}
+			}
+			for (long a : answerList) {
+				System.out.println(a);
+			}
 		}
-		System.out.println(sb);
 	}
-	
-	public static long padovan(int N) {
-		if(seq[N] == null) {
-			seq[N] = padovan(N - 2) + padovan(N - 3);
+
+	private static long recur(int n) {
+		if (dp[n] == null) {
+			dp[n] = recur(n - 3) + recur(n - 2);
 		}
-		return seq[N];
+		return dp[n];
 	}
- 
 }
