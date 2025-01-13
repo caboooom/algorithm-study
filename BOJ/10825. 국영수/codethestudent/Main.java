@@ -21,6 +21,8 @@ public class Main {
 
         @Override
         public int compareTo(Main.Student o) {
+            // 음수이면 -> 1번째 인자가 앞에 
+            // 양수이면 -> 2번째 인자가 앞에
             if (o.lang != this.lang) {
                 return Integer.compare(o.lang, this.lang);
             }
@@ -52,11 +54,11 @@ public class Main {
                 System.out.println(s.name);
             }
 
-            // 감소해야한다 -> 큰수 ~ 작은수
-            // 증가해야한다 -> 작은수 ~ 큰수
-            Student student1 = new Student("asdf", 1, 1, 1);
-            Student student2 = new Student("asdf", 1, 1, 2);
-            System.out.println(student1.compareTo(student2));
+            // // 감소해야한다 -> 큰수 ~ 작은수
+            // // 증가해야한다 -> 작은수 ~ 큰수
+            // Student student1 = new Student("asdf", 1, 1, 1);
+            // Student student2 = new Student("asdf", 1, 1, 2);
+            // System.out.println(student1.compareTo(student2));
         }
     }
 }
