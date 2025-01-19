@@ -1,0 +1,40 @@
+package BOJ.자료구조.쇠막대기_10799.insub2004_250119;
+
+import java.io.*;
+import java.util.Stack;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = br.readLine();
+
+        Stack<Character> stack = new Stack<>();
+        char open = '(';
+        int result = 0;
+
+        // 1. '('을 만나면 stack push
+        // 2. ')'을 만나면 str(i-1)를 본다.
+        // 2-1. '('면 레이저라서 때문에 stack pop 하고난 뒤 stack current size 를 result 더하기
+        // 2-2. 아니면 마찬가지로 stack pop 하고 막대기라서 result + 1
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == open) {
+                stack.push(open);
+            } else {
+                if (str.charAt(i-1) == open) {
+                    stack.pop();
+                    result += stack.size();
+                } else {
+                    stack.pop();
+                    result += 1;
+                }
+            }
+        }
+
+        bw.write(String.valueOf(result));
+        bw.flush();
+        bw.close();
+    }
+}
