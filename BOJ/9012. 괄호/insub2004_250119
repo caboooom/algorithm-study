@@ -1,0 +1,45 @@
+package BOJ.자료구조.괄호_9012.insub2004_250119;
+
+import java.io.*;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        char ch = '(';
+
+        for (int i = 0; i < N; i++) {
+            boolean flag = false;
+            String str = br.readLine();
+            Stack<Character> stack = new Stack<>();
+
+            for (int j = 0; j < str.length(); j++) {
+                if (ch == str.charAt(j)) {  // 문자가 '('인 경우 stack push
+                    stack.push(ch);
+                } else if (!stack.isEmpty()) {  // 문자가 ')'인 경우 stack pop
+                    stack.pop();
+                } else {
+                    flag = true;    // 문자열이 남아있는데 stack 비어있는 경우 NO 출력
+                    break;
+                }
+            }
+            if (!stack.isEmpty()) {     // 문자열을 전부 순회했는데 stack 요소가 남아있는 경우 NO 출력
+                flag = true;
+            }
+
+            if (flag) {
+                bw.write("NO");
+                bw.newLine();
+                bw.flush();
+            } else {
+                bw.write("YES");
+                bw.newLine();
+                bw.flush();
+            }
+        }
+        bw.close();
+    }
+}
