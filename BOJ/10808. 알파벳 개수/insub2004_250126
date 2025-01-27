@@ -1,0 +1,25 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int[] alphabet = new int[26];   // a:97 z:122
+
+        char[] chars = br.readLine().toCharArray();
+
+        for (char ch : chars) {
+            alphabet[ch - 97]++;
+        }
+
+        for (int i : alphabet) {
+            bw.write(i + " ");
+        }
+
+        bw.flush();
+        br.close();
+        bw.close();
+    }
+}
