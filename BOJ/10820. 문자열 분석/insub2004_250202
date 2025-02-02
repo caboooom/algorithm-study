@@ -1,0 +1,37 @@
+package BOJ.구현.문자열분석_10829;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+        while ((line = br.readLine()) != null) {
+            char[] chars = line.toCharArray();
+
+            int low = 0;
+            int up = 0;
+            int num = 0;
+            int space = 0;
+
+            for (int i = 0; i < chars.length; i++) {
+                char a = chars[i];
+                if (a >= 48 && a <= 57) {
+                    num++;
+                } else if (a >= 65 && a <=90) {
+                    up++;
+                } else if (a >= 97 && a <= 122) {
+                    low++;
+                } else {
+                    space++;
+                }
+            }
+
+            System.out.println(low + " " + up + " " + num + " " + space);
+        }
+    }
+
+}
