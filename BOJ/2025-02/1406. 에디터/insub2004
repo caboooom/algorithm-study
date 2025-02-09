@@ -1,0 +1,42 @@
+package BOJ.구현.에디터_1406;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] strings = br.readLine().split("");
+        List<String> list = new LinkedList<>(Arrays.asList(strings));
+        ListIterator<String> listIterator = list.listIterator();
+
+        while (listIterator.hasNext()) {    // 처음엔 cursor의 위치가 index:0 뒤에 있으므로 맨 뒤까지 옮겨줘야함
+            listIterator.next();
+        }
+
+        int commands = Integer.parseInt(br.readLine());
+        for (int i = 0; i < commands; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String command = st.nextToken();
+            if ("L".equals(command) && listIterator.hasPrevious()) {
+                listIterator.previous();
+            } else if ("D".equals(command) && listIterator.hasNext()) {
+                listIterator.next();
+            } else if ("B".equals(command) && listIterator.hasPrevious()) {
+                listIterator.previous();
+                listIterator.remove();
+            } else if("P".equals(command)) {
+                listIterator.add(st.nextToken());
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (String string : list) {
+            sb.append(string);
+        }
+        System.out.println(sb);
+    }
+}
