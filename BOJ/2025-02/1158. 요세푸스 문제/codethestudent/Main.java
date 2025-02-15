@@ -2,7 +2,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -12,24 +15,27 @@ public class Main {
             int n = Integer.parseInt(arr[0]);
             int k = Integer.parseInt(arr[1]);
 
-            List<Integer> list = new ArrayList<>();
+            Queue<Integer> queue = new LinkedList<>();
+            List<Integer> answer = new ArrayList<>();
 
             for (int i = 1; i <= n; i++) {
-                list.add(i);
+                queue.add(i);
             }
-            int index = 0;
-            StringBuilder sb = new StringBuilder("<");
 
-            for (int i = 0; i < n; i++) {
-                index += k-1;
-                if (index >= list.size()) {
-                    index %= list.size();
+            int count = 1;
+
+            while (!queue.isEmpty()) {
+                if (count++ == k) {
+                    count = 1;
+                    answer.add(queue.poll());
+                } else {
+                    queue.add(queue.poll());
                 }
-
-                sb.append(list.remove(index) + ", ");
             }
-
-            System.out.println(sb.substring(0, sb.length() - 2) + ">");
+            StringBuilder sb = new StringBuilder("<");
+            sb.append(answer.stream().map(e -> String.valueOf(e)).collect(Collectors.joining(", ")))
+                    .append(">");
+            System.out.println(sb.toString());
         }
     }
 }
