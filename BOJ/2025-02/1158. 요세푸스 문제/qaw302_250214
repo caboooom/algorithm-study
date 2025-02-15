@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder().append("<");
+
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int i=1; i<=N; i++) {
+            list.add(i);
+        }
+
+        int cur = 0;
+        while (!list.isEmpty()) {
+            cur = (cur-1+K) % list.size();
+            sb.append(list.get(cur)).append(", ");
+            list.remove(cur);
+        }
+
+        sb.setCharAt(sb.length()-2, '>');
+        System.out.println(sb);
+        br.close();
+    }
+}
