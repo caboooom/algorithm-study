@@ -1,0 +1,45 @@
+package BOJ.자료구조.요세푸스문제2_1168;
+
+import BOJ.탐색.선분위의점_11663.insub2004_250115.A;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] st = br.readLine().split(" ");
+        int n = Integer.parseInt(st[0]);
+        int k = Integer.parseInt(st[1]) - 1; // index는 0부터 시작되서
+
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            list.add(i);
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("<");
+
+        int idx = 0;
+
+        for (int i = 0; i < n-1; i++) {   // n-1번만 돌려서 일부러 list에 하나 남겨놓기
+            idx += k;   // 리스트에서 뽑을 인덱스 번째
+
+            // 근데 idx가 list의 사이즈를 벗어났을 땐 %연산 해준다.
+            if (idx >= list.size()) {
+                idx %= list.size();
+            }
+
+            sb.append(list.remove(idx)).append(", ");
+        }
+        // 마지막 남은 수 출력에 추가
+        sb.append(list.remove(0)).append(">");
+
+        System.out.println(sb);
+    }
+
+}

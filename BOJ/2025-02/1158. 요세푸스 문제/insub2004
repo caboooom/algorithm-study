@@ -1,0 +1,36 @@
+package BOJ.자료구조.요세푸스문제_1158;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] st = br.readLine().split(" ");
+        int n = Integer.parseInt(st[0]);
+        int k = Integer.parseInt(st[1]);
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i=1; i <= n; i++) {
+            queue.offer(i);
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("<");
+
+        int cnt = 0;
+        while (queue.size()!=1) {
+            int data = queue.poll();
+            cnt++;
+            if(cnt%k == 0){
+                sb.append(data).append(", ");
+            }else queue.add(data);
+        }
+        sb.append(queue.poll()).append(">");
+        System.out.println(sb);
+    }
+
+}
