@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/10844. 쉬운 계단 수" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11053. 가장 긴 증가하는 부분 수열" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11055. 가장 큰 증가하는 부분 수열" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11057. 오르막 수" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11722. 가장 긴 감소하는 부분 수열" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11726. 2xn 타일링" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11727. 2xn 타일링 2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/1463. 1로 만들기" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/2156. 포도주 시식" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/2193. 이친수" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/9095. 1,2,3 더하기" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/9465. 스티커" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
