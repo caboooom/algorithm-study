@@ -1,0 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+
+        Stack<Character> stack = new Stack<>();
+
+        while (n > 0) {
+            int remainder = n % b; // 나머지 구하기
+            if (remainder < 10) {
+                // 0 ~ 9 → 숫자로 변환
+                stack.push((char) (remainder + '0'));
+            } else {
+                // 10 ~ 35 → 문자(A~Z)로 변환
+                stack.push((char) (remainder - 10 + 'A'));  // ex)나머지가 11여서 'B'로 출력되야 되는 경우 >>
+            }                                               // 11 - 10 + 'A'(65) → 1 + 65 → 'B'
+            n /= b; // 몫 갱신
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop()); // 결과 출력 순서 맞추기
+        }
+
+        System.out.println(sb);
+    }
+}
